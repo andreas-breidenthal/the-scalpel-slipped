@@ -1,0 +1,634 @@
+/* ============================================================
+   THE SCALPEL SLIPPED — styles.css
+   Single unified style for all pages.
+   Document block classes: .intel-report  .telegram  .private-note
+   ============================================================ */
+
+/* ── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --bg:          #f0f2f5;       /* cool blue-grey page */
+  --surface:     #fafbfc;       /* card / page white */
+  --ink:         #1a1d22;       /* near-black body text */
+  --steel:       #3a4455;       /* dark slate — secondary text */
+  --slate:       #5c6b82;       /* mid slate — labels, captions */
+  --mist:        #8a97a8;       /* muted — metadata, sub-text */
+  --rule:        #c8d0da;       /* cool divider lines */
+  --crimson:     #8b1a1a;       /* the tear — accent only */
+  --shadow:      rgba(26,29,34,0.10);
+  --shadow-deep: rgba(26,29,34,0.18);
+
+  /* document blocks */
+  --doc-bg:      #1e2530;       /* dark slate for report/telegram bg */
+  --doc-text:    #c8d8e8;       /* cool light text on dark */
+  --doc-dim:     #7a8fa8;       /* dimmer metadata on dark */
+  --doc-rule:    rgba(200,216,232,0.15);
+  --doc-accent:  #a8c0d8;       /* header labels on dark */
+}
+
+/* ── RESET ───────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+/* ── BASE ────────────────────────────────────────────────── */
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 17px;
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* ── SITE NAV ────────────────────────────────────────────── */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--rule);
+  padding: 1rem 4vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.site-nav a {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.site-nav a:hover { color: var(--crimson); }
+.site-nav .home   { color: var(--slate); }
+.site-nav-links   { display: flex; gap: 2rem; }
+
+/* ── PAGE LAYOUT ─────────────────────────────────────────── */
+.page-wrap {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 3.5rem 4vw 6rem;
+}
+
+/* ── CHAPTER HEADER ──────────────────────────────────────── */
+.chapter-header {
+  margin-bottom: 3rem;
+}
+
+.part-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.chapter-num {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mist);
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.chapter-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.chapter-date {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--slate);
+  display: block;
+  margin-top: 0.6rem;
+}
+
+.chapter-rule {
+  width: 48px;
+  height: 1px;
+  background: var(--crimson);
+  margin: 1.5rem 0 2.5rem;
+  opacity: 0.5;
+}
+
+/* ── PROSE ───────────────────────────────────────────────── */
+.prose p {
+  margin-bottom: 1.4em;
+  hyphens: auto;
+  text-align: left;
+}
+
+/* Drop cap on first paragraph of each chapter */
+.prose > p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.6em;
+  font-weight: 600;
+  line-height: 0.8;
+  float: left;
+  margin: 0.08em 0.1em 0 0;
+  color: var(--steel);
+}
+
+.prose em  { font-style: italic; }
+.prose strong { font-weight: 600; color: var(--steel); }
+
+/* Section break */
+.prose .section-break {
+  text-align: center;
+  color: var(--rule);
+  letter-spacing: 0.4em;
+  margin: 2.5rem 0;
+  font-size: 0.9rem;
+  user-select: none;
+}
+
+/* Day/section subheads within Part III chapters */
+.prose .day-head {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+  margin: 2.5rem 0 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ── INTELLIGENCE REPORT BLOCK ───────────────────────────── */
+/*
+  Usage:
+  <div class="intel-report">
+    <div class="ir-header">
+      <span class="ir-from">Station Belgrade</span>
+      <span class="ir-date">2nd April 1914</span>
+      <span class="ir-class urgent">Classification: URGENT</span>
+    </div>
+    <div class="ir-body">
+      ... report text ...
+      <p class="ir-rec">RECOMMENDATION: ...</p>
+    </div>
+  </div>
+*/
+
+.intel-report {
+  background: var(--doc-bg);
+  border-left: 3px solid var(--crimson);
+  border-radius: 2px;
+  margin: 2rem 0;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: var(--doc-text);
+  overflow: hidden;
+}
+
+.ir-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  align-items: baseline;
+  padding: 0.9rem 1.4rem 0.8rem;
+  border-bottom: 1px solid var(--doc-rule);
+}
+
+.ir-from {
+  color: var(--doc-accent);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+}
+
+.ir-date {
+  color: var(--doc-dim);
+  font-size: 0.78rem;
+}
+
+.ir-class {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--doc-dim);
+  margin-left: auto;
+}
+.ir-class.urgent { color: #e88a8a; }
+.ir-class.eyes-only { color: #e8c88a; }
+
+.ir-body {
+  padding: 1rem 1.4rem 1.2rem;
+}
+
+.ir-body p {
+  margin-bottom: 0.7em;
+}
+
+.ir-rec {
+  color: var(--doc-accent);
+  border-top: 1px solid var(--doc-rule);
+  padding-top: 0.6rem;
+  margin-top: 0.8rem;
+  font-style: italic;
+}
+
+.ir-notation {
+  color: #e88a8a;
+  font-style: italic;
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+}
+
+/* ── TELEGRAM BLOCK ──────────────────────────────────────── */
+/*
+  Usage:
+  <div class="telegram">
+    <div class="tg-meta">
+      <span class="tg-from">From Berlin</span>
+      <span class="tg-time">11:00 PM · 30th July</span>
+    </div>
+    <p>Germany demands Russian demobilization within twelve hours.</p>
+  </div>
+*/
+
+.telegram {
+  background: var(--doc-bg);
+  border-top: 1px solid var(--doc-rule);
+  border-bottom: 1px solid var(--doc-rule);
+  padding: 0.8rem 1.4rem;
+  margin: 0;                    /* telegrams stack flush */
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.84rem;
+  line-height: 1.65;
+  color: var(--doc-text);
+}
+
+/* Chain of telegrams: collapse internal borders */
+.telegram + .telegram {
+  border-top: none;
+  padding-top: 0.5rem;
+}
+
+/* Wrap a chain in .telegram-chain for outer spacing */
+.telegram-chain {
+  margin: 2rem 0;
+  border-radius: 2px;
+  overflow: hidden;
+  border: 1px solid var(--doc-rule);
+  background: var(--doc-bg);
+}
+.telegram-chain .telegram {
+  border: none;
+  border-bottom: 1px solid var(--doc-rule);
+  border-radius: 0;
+}
+.telegram-chain .telegram:last-child {
+  border-bottom: none;
+}
+
+.tg-meta {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  margin-bottom: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.tg-from {
+  color: var(--doc-accent);
+  font-weight: 500;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.tg-time {
+  color: var(--doc-dim);
+  font-size: 0.75rem;
+}
+
+.telegram p { margin: 0; }
+
+/* ── PRIVATE NOTE BLOCK ──────────────────────────────────── */
+/*
+  Usage:
+  <div class="private-note">
+    <div class="pn-head">Personal Note · 10th June 1914</div>
+    <p>Received intelligence regarding threat to Habsburg heir...</p>
+  </div>
+*/
+
+.private-note {
+  background: transparent;
+  border-left: 2px solid var(--rule);
+  margin: 2rem 0;
+  padding: 0.2rem 0 0.2rem 1.4rem;
+  font-family: 'Crimson Pro', serif;
+  font-style: italic;
+  color: var(--steel);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.pn-head {
+  font-family: 'Inconsolata', monospace;
+  font-style: normal;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mist);
+  margin-bottom: 0.6rem;
+}
+
+.private-note p { margin-bottom: 0.7em; }
+.private-note p:last-child { margin-bottom: 0; }
+
+/* ── CHAPTER NAV ─────────────────────────────────────────── */
+.chapter-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 2.5rem 0 0;
+  margin-top: 3rem;
+  border-top: 1px solid var(--rule);
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.chapter-nav a {
+  color: var(--mist);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.chapter-nav a:hover { color: var(--crimson); }
+.chapter-nav .nav-center { color: var(--rule); }
+
+/* ── INDEX PAGE STYLES ───────────────────────────────────── */
+/* (used on index.html only, kept here so no separate file needed) */
+
+.book-wrap {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 4rem 4vw 6rem;
+}
+
+.cover-block {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 4rem;
+  align-items: start;
+  margin-bottom: 5rem;
+  padding-bottom: 4rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (max-width: 680px) {
+  .cover-block {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .cover-img {
+    width: calc(100% - 2rem);
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+
+.cover-img {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px var(--shadow), 0 1px 4px var(--shadow);
+}
+.cover-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 10px;
+}
+
+.title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+  padding-top: 0.5rem;
+}
+
+.series-label {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson);
+}
+
+h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.08;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.tagline, .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--slate);
+}
+
+.epigraph {
+  font-family: 'Crimson Pro', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--mist);
+  border-left: 2px solid var(--crimson);
+  padding-left: 1rem;
+  line-height: 1.6;
+}
+.epigraph cite {
+  display: block;
+  font-style: normal;
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  color: var(--rule);
+  font-family: 'Inconsolata', monospace;
+  letter-spacing: 0.04em;
+}
+
+.presented-by {
+  font-size: 0.88rem;
+  color: var(--mist);
+  font-style: italic;
+}
+
+.divider {
+  width: 60px;
+  height: 1px;
+  background: var(--rule);
+}
+
+.about-text {
+  font-size: 1rem;
+  color: var(--steel);
+  line-height: 1.8;
+  max-width: 520px;
+}
+.about-text p + p { margin-top: 1rem; }
+
+.fiction-note {
+  font-size: 0.82rem;
+  font-style: italic;
+  color: var(--mist);
+}
+
+.start-btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  text-decoration: none;
+  border: 1px solid var(--crimson);
+  padding: 0.5rem 1.2rem;
+  transition: background 0.2s, color 0.2s;
+}
+.start-btn:hover { background: var(--crimson); color: var(--surface); }
+
+/* Contents */
+.contents-section { margin-bottom: 3rem; }
+
+.contents-heading {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.contents-heading::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+.part-sublabel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--slate);
+  margin-bottom: 0.5rem;
+  padding-left: 2.8rem;
+}
+
+.contents-item {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  align-items: baseline;
+  gap: 0.8rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+}
+.contents-item:first-of-type { border-top: 1px solid var(--rule); }
+.contents-item:hover { background: rgba(139,26,26,0.03); }
+.contents-item:hover .item-title { color: var(--crimson); }
+
+.item-num {
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.7rem;
+  color: var(--rule);
+  text-align: right;
+  letter-spacing: 0.05em;
+  padding-top: 0.15rem;
+}
+
+.item-body { display: flex; flex-direction: column; gap: 0.1rem; }
+
+.item-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 400;
+  color: var(--ink);
+  transition: color 0.2s;
+  line-height: 1.3;
+}
+
+.item-sub {
+  font-size: 0.8rem;
+  color: var(--mist);
+  font-style: italic;
+}
+
+/* Footer */
+.book-footer {
+  margin-top: 5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-family: 'Inconsolata', monospace;
+  font-size: 0.72rem;
+  color: var(--rule);
+  letter-spacing: 0.06em;
+}
+.book-footer a {
+  color: var(--mist);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.book-footer a:hover { color: var(--crimson); }
+
+/* ── FADE ANIMATION ──────────────────────────────────────── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: fadeUp 0.6s ease forwards;
+}
+@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+.fade-in:nth-child(1) { animation-delay: 0.05s; }
+.fade-in:nth-child(2) { animation-delay: 0.2s; }
+.fade-in:nth-child(3) { animation-delay: 0.35s; }
+
+/* ── MOBILE ──────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .page-wrap { padding: 2rem 1.2rem 5rem; }
+
+  .intel-report,
+  .telegram,
+  .telegram-chain { font-size: 0.8rem; }
+
+  .ir-header { flex-direction: column; gap: 0.2rem; }
+  .ir-class  { margin-left: 0; }
+
+  .chapter-nav { font-size: 0.68rem; }
+}
