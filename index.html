@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Scalpel Slipped — Andreas Breidenthal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Inconsolata:wght@300;400;500&family=Crimson+Pro:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #f0f2f5;        /* cool blue-grey page */
+      --surface:  #fafbfc;        /* near-white card */
+      --ink:      #1a1d22;        /* near-black */
+      --steel:    #3a4455;        /* dark slate blue */
+      --slate:    #5c6b82;        /* mid slate */
+      --mist:     #8a97a8;        /* muted blue-grey */
+      --rule:     #c8d0da;        /* cool divider */
+      --crimson:  #8b1a1a;        /* the slash — same as book cover tear */
+      --shadow:   rgba(26,29,34,0.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Crimson Pro', Georgia, serif;
+      font-size: 17px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── SITE NAV ── */
+    .site-nav {
+      padding: 1.2rem 4vw;
+      border-bottom: 1px solid var(--rule);
+      background: var(--surface);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .site-nav a {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .site-nav a:hover { color: var(--crimson); }
+    .site-nav .home { color: var(--slate); }
+    .site-nav-links { display: flex; gap: 2rem; }
+
+    /* ── LAYOUT ── */
+    .book-wrap {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 4rem 4vw 6rem;
+    }
+
+    /* ── COVER BLOCK ── */
+    .cover-block {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 4rem;
+      align-items: start;
+      margin-bottom: 5rem;
+      padding-bottom: 4rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    @media (max-width: 680px) {
+      .cover-block {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+      .cover-img {
+        width: calc(100% - 2rem);
+        max-width: 280px;
+        margin: 0 auto;
+      }
+    }
+
+    .cover-img {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow), 0 1px 4px var(--shadow);
+    }
+    .cover-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 1.3rem;
+      padding-top: 0.5rem;
+    }
+
+    .series-label {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 400;
+      line-height: 1.08;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+    }
+
+    .subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--slate);
+    }
+
+    .epigraph {
+      font-family: 'Crimson Pro', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--mist);
+      border-left: 2px solid var(--crimson);
+      padding-left: 1rem;
+      line-height: 1.6;
+    }
+    .epigraph cite {
+      display: block;
+      font-style: normal;
+      font-size: 0.82rem;
+      margin-top: 0.3rem;
+      color: var(--rule);
+      font-family: 'Inconsolata', monospace;
+      letter-spacing: 0.04em;
+    }
+
+    .presented-by {
+      font-size: 0.88rem;
+      color: var(--mist);
+      font-style: italic;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    .about-text {
+      font-size: 1rem;
+      color: var(--steel);
+      line-height: 1.8;
+      max-width: 520px;
+    }
+    .about-text p + p { margin-top: 1rem; }
+
+    .fiction-note {
+      font-size: 0.82rem;
+      font-style: italic;
+      color: var(--mist);
+    }
+
+    .start-btn {
+      display: inline-block;
+      margin-top: 0.8rem;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      text-decoration: none;
+      border: 1px solid var(--crimson);
+      padding: 0.5rem 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .start-btn:hover { background: var(--crimson); color: var(--surface); }
+
+    /* ── CONTENTS ── */
+    .contents-section {
+      margin-bottom: 3rem;
+    }
+
+    .contents-heading {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 0.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+    .contents-heading::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+    }
+
+    /* Part label — larger, serif */
+    .part-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--slate);
+      margin-bottom: 0.5rem;
+      padding-left: 2.8rem;
+    }
+
+    .contents-item {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      align-items: baseline;
+      gap: 0.8rem;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.15s;
+    }
+    .contents-item:first-of-type { border-top: 1px solid var(--rule); }
+    .contents-item:hover { background: rgba(139,26,26,0.03); }
+    .contents-item:hover .item-title { color: var(--crimson); }
+
+    .item-num {
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.7rem;
+      color: var(--rule);
+      text-align: right;
+      letter-spacing: 0.05em;
+      padding-top: 0.15rem;
+    }
+
+    .item-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.1rem;
+    }
+
+    .item-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--ink);
+      transition: color 0.2s;
+      line-height: 1.3;
+    }
+
+    .item-sub {
+      font-size: 0.8rem;
+      color: var(--mist);
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    .book-footer {
+      margin-top: 5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: 'Inconsolata', monospace;
+      font-size: 0.72rem;
+      color: var(--rule);
+      letter-spacing: 0.06em;
+    }
+    .book-footer a {
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .book-footer a:hover { color: var(--crimson); }
+
+    /* ── FADE ── */
+    .fade-in { opacity: 0; transform: translateY(12px); animation: fadeUp 0.6s ease forwards; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    .fade-in:nth-child(1) { animation-delay: 0.05s; }
+    .fade-in:nth-child(2) { animation-delay: 0.2s; }
+    .fade-in:nth-child(3) { animation-delay: 0.35s; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="https://andreas-breidenthal.github.io/" class="home">Andreas Breidenthal</a>
+    <div class="site-nav-links">
+      <a href="https://github.com/andreas-breidenthal/the-scalpel-slipped" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </nav>
+
+  <div class="book-wrap">
+
+    <!-- COVER + TITLE -->
+    <div class="cover-block fade-in">
+      <div class="cover-img">
+        <img src="images/the-scalpel-slipped-2_3.jpg" alt="The Scalpel Slipped cover">
+      </div>
+      <div class="title-block">
+        <p class="series-label">Andreas Breidenthal</p>
+        <h1>The Scalpel Slipped</h1>
+        <p class="subtitle">…and the world bled out</p>
+        <div class="epigraph">
+          "A higher power has restored that order which I could not maintain."
+          <cite>— Emperor Franz Josef, 29th June 1914</cite>
+        </div>
+        <p class="presented-by">A novel in three parts</p>
+        <div class="divider"></div>
+        <div class="about-text">
+          <p><em>The Scalpel Slipped</em> follows Russian Foreign Minister Sergei Sazonov across three decades — from the winter night in 1912 when he began mapping Europe's fracture lines, through the catastrophe of 1914, to his exile and death in Nice in 1927.</p>
+          <p>In 2025, a doctoral researcher finds a leather-bound notebook in a second-hand bookshop in Provence. What it contains rewrites how the Great War began — and forces him to choose between silence and speech.</p>
+          <p class="fiction-note">This is a work of fiction. All intelligence reports, private documents, and internal correspondence depicted are invented. No institution referenced endorses this work.</p>
+        </div>
+        <a href="ch01.html" class="start-btn">Begin Reading →</a>
+      </div>
+    </div>
+
+    <!-- CONTENTS -->
+    <div class="fade-in" style="animation-delay:.15s;">
+
+      <!-- Part I -->
+      <div class="contents-section">
+        <div class="contents-heading">Part I &nbsp;·&nbsp; Positioning</div>
+        <p class="part-label">St. Petersburg, 1912–1914</p>
+
+        <a href="ch01.html" class="contents-item">
+          <span class="item-num">1</span>
+          <span class="item-body">
+            <span class="item-title">The Telegram</span>
+            <span class="item-sub">St. Petersburg, 28th June 1914</span>
+          </span>
+        </a>
+        <a href="ch02.html" class="contents-item">
+          <span class="item-num">2</span>
+          <span class="item-body">
+            <span class="item-title">Architecture</span>
+            <span class="item-sub">St. Petersburg, 14th February 1912</span>
+          </span>
+        </a>
+        <a href="ch03.html" class="contents-item">
+          <span class="item-num">3</span>
+          <span class="item-body">
+            <span class="item-title">The Keystone</span>
+            <span class="item-sub">St. Petersburg, January 1914</span>
+          </span>
+        </a>
+        <a href="ch04.html" class="contents-item">
+          <span class="item-num">4</span>
+          <span class="item-body">
+            <span class="item-title">The First Reports</span>
+            <span class="item-sub">St. Petersburg, March–April 1914</span>
+          </span>
+        </a>
+        <a href="ch05.html" class="contents-item">
+          <span class="item-num">5</span>
+          <span class="item-body">
+            <span class="item-title">The Silence</span>
+            <span class="item-sub">St. Petersburg, May–June 1914</span>
+          </span>
+        </a>
+        <a href="ch06.html" class="contents-item">
+          <span class="item-num">6</span>
+          <span class="item-body">
+            <span class="item-title">The Ultimatum</span>
+            <span class="item-sub">St. Petersburg, 24th July 1914</span>
+          </span>
+        </a>
+        <a href="ch07.html" class="contents-item">
+          <span class="item-num">7</span>
+          <span class="item-body">
+            <span class="item-title">The Cascade</span>
+            <span class="item-sub">St. Petersburg / Tsarskoye Selo, 24th July – 30th July 1914</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Part II -->
+      <div class="contents-section">
+        <div class="contents-heading">Part II &nbsp;·&nbsp; Reckoning</div>
+        <p class="part-label">Russia and Exile, 1916–1927</p>
+
+        <a href="ch08.html" class="contents-item">
+          <span class="item-num">8</span>
+          <span class="item-body">
+            <span class="item-title">Dismissal</span>
+            <span class="item-sub">Tsarskoye Selo, 10th July 1916</span>
+          </span>
+        </a>
+        <a href="ch09.html" class="contents-item">
+          <span class="item-num">9</span>
+          <span class="item-body">
+            <span class="item-title">Flight</span>
+            <span class="item-sub">Petrograd / Southern Russia, February–October 1917</span>
+          </span>
+        </a>
+        <a href="ch10.html" class="contents-item">
+          <span class="item-num">10</span>
+          <span class="item-body">
+            <span class="item-title">Exile</span>
+            <span class="item-sub">Paris / Nice, 1919–1925</span>
+          </span>
+        </a>
+        <a href="ch11.html" class="contents-item">
+          <span class="item-num">11</span>
+          <span class="item-body">
+            <span class="item-title">The Memoirs</span>
+            <span class="item-sub">Nice, January–August 1925</span>
+          </span>
+        </a>
+        <a href="ch12.html" class="contents-item">
+          <span class="item-num">12</span>
+          <span class="item-body">
+            <span class="item-title">The Interview</span>
+            <span class="item-sub">Nice, October 1926</span>
+          </span>
+        </a>
+        <a href="ch13.html" class="contents-item">
+          <span class="item-num">13</span>
+          <span class="item-body">
+            <span class="item-title">The Death</span>
+            <span class="item-sub">Nice, 25th December 1927</span>
+          </span>
+        </a>
+        <a href="epilogue-1.html" class="contents-item">
+          <span class="item-num">—</span>
+          <span class="item-body">
+            <span class="item-title">Epilogue: The Silence</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Part III -->
+      <div class="contents-section">
+        <div class="contents-heading">Part III &nbsp;·&nbsp; Discovery</div>
+        <p class="part-label">France, Russia, Austria, 2025–2026</p>
+
+        <a href="ch14.html" class="contents-item">
+          <span class="item-num">14</span>
+          <span class="item-body">
+            <span class="item-title">The Bookshop</span>
+            <span class="item-sub">Saint-Paul-de-Vence, France, June 2025</span>
+          </span>
+        </a>
+        <a href="ch15.html" class="contents-item">
+          <span class="item-num">15</span>
+          <span class="item-body">
+            <span class="item-title">Authentication</span>
+            <span class="item-sub">Paris, June–July 2025</span>
+          </span>
+        </a>
+        <a href="ch16.html" class="contents-item">
+          <span class="item-num">16</span>
+          <span class="item-body">
+            <span class="item-title">Moscow</span>
+            <span class="item-sub">Russian State Archive, July 2025</span>
+          </span>
+        </a>
+        <a href="ch17.html" class="contents-item">
+          <span class="item-num">17</span>
+          <span class="item-body">
+            <span class="item-title">Vienna</span>
+            <span class="item-sub">Austrian State Archive, August 2025</span>
+          </span>
+        </a>
+        <a href="epilogue-2.html" class="contents-item">
+          <span class="item-num">—</span>
+          <span class="item-body">
+            <span class="item-title">Epilogue: Six Months Later</span>
+            <span class="item-sub">March 2026</span>
+          </span>
+        </a>
+      </div>
+
+      <!-- Closing -->
+      <div class="contents-section">
+        <div class="contents-heading">Closing Matter</div>
+
+        <a href="historical-note.html" class="contents-item">
+          <span class="item-num">—</span>
+          <span class="item-body">
+            <span class="item-title">Historical Note</span>
+            <span class="item-sub">What is documented · What is invented</span>
+          </span>
+        </a>
+      </div>
+
+    </div><!-- /fade-in -->
+
+    <!-- FOOTER -->
+    <div class="book-footer fade-in" style="animation-delay:.25s;">
+      <span>CC0 Public Domain · Andreas Breidenthal</span>
+      <span>
+        <a href="https://github.com/andreas-breidenthal/the-scalpel-slipped" target="_blank" rel="noopener">View on GitHub</a>
+        &nbsp;·&nbsp;
+        <a href="https://andreas-breidenthal.github.io/">Return to Archive</a>
+      </span>
+    </div>
+
+  </div><!-- /book-wrap -->
+
+</body>
+</html>
