@@ -23,6 +23,7 @@
   --rust:  var(--crimson);
   --gold:  var(--slate);
   --faded: var(--mist);
+  --ink:   #1a1d22;
 
   /* document blocks */
   --doc-bg:      #1e2530;       /* dark slate for report/telegram bg */
@@ -638,4 +639,19 @@ h1 {
   .ir-class  { margin-left: 0; }
 
   .chapter-nav { font-size: 0.68rem; }
+}
+
+/* ── Universal component overrides ────────────────────────── */
+.universal-header {
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--rule);
+}
+.universal-header a,
+.universal-header-opinions {
+  color: var(--slate) !important;
+  opacity: 1 !important;
+}
+.universal-header a:hover,
+.universal-header-opinions:hover {
+  color: var(--crimson) !important;
 }
