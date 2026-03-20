@@ -49,8 +49,10 @@ body {
 
 /* ── SITE NAV ────────────────────────────────────────────── */
 .site-nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   background: var(--surface);
   border-bottom: 1px solid var(--rule);
@@ -79,7 +81,7 @@ body {
 .page-wrap {
   max-width: 680px;
   margin: 0 auto;
-  padding: 3.5rem 4vw 6rem;
+  padding: 7rem 4vw 6rem;
 }
 
 /* ── CHAPTER HEADER ──────────────────────────────────────── */
@@ -629,7 +631,7 @@ h1 {
 
 /* ── MOBILE ──────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .page-wrap { padding: 2rem 1.2rem 5rem; }
+  .page-wrap { padding: 6rem 1.2rem 5rem; }
 
   .intel-report,
   .telegram,
@@ -643,8 +645,8 @@ h1 {
 
 /* ── Universal component overrides ────────────────────────── */
 .universal-header {
-  background-color: var(--surface);
-  border-bottom: 1px solid var(--rule);
+  background-color: var(--surface) !important;
+  border-bottom: 1px solid var(--rule) !important;
 }
 .universal-header a,
 .universal-header-opinions {
