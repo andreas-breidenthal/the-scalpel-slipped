@@ -17,6 +17,13 @@
   --shadow:      rgba(26,29,34,0.10);
   --shadow-deep: rgba(26,29,34,0.18);
 
+  /* ── Universal component aliases ── */
+  --paper: var(--surface);
+  --aged:  var(--bg);
+  --rust:  var(--crimson);
+  --gold:  var(--slate);
+  --faded: var(--mist);
+
   /* document blocks */
   --doc-bg:      #1e2530;       /* dark slate for report/telegram bg */
   --doc-text:    #c8d8e8;       /* cool light text on dark */
