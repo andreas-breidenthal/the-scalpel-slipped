@@ -2,8 +2,7 @@
 
 Andreas Breidenthal
 
-# The Scalpel Slipped
-
+# The Scalpel Slipped  
 ### *…and the world bled out*
 
 > "A higher power has restored that order which I could not maintain."  
