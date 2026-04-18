@@ -8,7 +8,7 @@ Andreas Breidenthal
 > "A higher power has restored that order which I could not maintain."  
 > — Emperor Franz Josef, 29th June 1914
 
-~*A novel in three parts*~
+*A novel in three parts*
 
 ---
 
