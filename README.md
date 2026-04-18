@@ -10,8 +10,6 @@ Andreas Breidenthal
 
 *A novel in three parts*
 
-<font color="red">This text is red!</font>
-
 ---
 
 *The Scalpel Slipped* follows Russian Foreign Minister Sergei Sazonov across three decades — from the winter night in 1912 when he began mapping Europe's fracture lines, through the catastrophe of 1914, to his exile and death in Nice in 1927.
