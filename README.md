@@ -17,60 +17,60 @@ In 2025, a doctoral researcher finds a leather-bound notebook in a second-hand b
 
 *This is a work of fiction. All intelligence reports, private documents, and internal correspondence depicted are invented. No institution referenced endorses this work.*
 
-[Begin Reading →](ch01.html)
+[Begin Reading →](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch01.html)
 
 ## Part I · Positioning
 *St. Petersburg, 1912–1914*
 
-1. [**The Telegram**](ch01.html)  
+1. [**The Telegram**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch01.html)  
    *St. Petersburg, 28th June 1914*
-2. [**Architecture**](ch02.html)  
+2. [**Architecture**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch02.html)  
    *St. Petersburg, 14th February 1912*
-3. [**The Keystone**](ch03.html)  
+3. [**The Keystone**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch03.html)  
    *St. Petersburg, January 1914*
-4. [**The First Reports**](ch04.html)  
+4. [**The First Reports**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch04.html)  
    *St. Petersburg, March–April 1914*
-5. [**The Silence**](ch05.html)  
+5. [**The Silence**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch05.html)  
    *St. Petersburg, May–June 1914*
-6. [**The Ultimatum**](ch06.html)  
+6. [**The Ultimatum**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch06.html)  
    *St. Petersburg, 24th July 1914*
-7. [**The Cascade**](ch07.html)  
+7. [**The Cascade**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch07.html)  
    *St. Petersburg / Tsarskoye Selo, 24th July – 30th July 1914*
 
 ## Part II · Reckoning
 *Russia and Exile, 1916–1927*
 
-8. [**Dismissal**](ch08.html)  
+8. [**Dismissal**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch08.html)  
    *Tsarskoye Selo, 10th July 1916*
-9. [**Flight**](ch09.html)  
+9. [**Flight**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch09.html)  
    *Petrograd / Southern Russia, February–October 1917*
-10. [**Exile**](ch10.html)  
+10. [**Exile**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch10.html)  
     *Paris / Nice, 1919–1925*
-11. [**The Memoirs**](ch11.html)  
+11. [**The Memoirs**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch11.html)  
     *Nice, January–August 1925*
-12. [**The Interview**](ch12.html)  
+12. [**The Interview**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch12.html)  
     *Nice, October 1926*
-13. [**The Death**](ch13.html)  
+13. [**The Death**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch13.html)  
     *Nice, 25th December 1927*
-* [**Epilogue: The Silence**](epilogue-1.html)
+* [**Epilogue: The Silence**](https://andreas-breidenthal.github.io/the-scalpel-slipped/epilogue-1.html)
 
 ## Part III · Discovery
 *France, Russia, Austria, 2025–2026*
 
-14. [**The Bookshop**](ch14.html)  
+14. [**The Bookshop**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch14.html)  
     *Saint-Paul-de-Vence, France, June 2025*
-15. [**Authentication**](ch15.html)  
+15. [**Authentication**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch15.html)  
     *Paris, June–July 2025*
-16. [**Moscow**](ch16.html)  
+16. [**Moscow**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch16.html)  
     *Russian State Archive, July 2025*
-17. [**Vienna**](ch17.html)  
+17. [**Vienna**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch17.html)  
     *Austrian State Archive, August 2025*
-18. [**The Choice**](ch18.html)  
+18. [**The Choice**](https://andreas-breidenthal.github.io/the-scalpel-slipped/ch18.html)  
     *Paris, September 2025*
-* [**Epilogue: Six Months Later**](epilogue-2.html)  
+* [**Epilogue: Six Months Later**](https://andreas-breidenthal.github.io/the-scalpel-slipped/epilogue-2.html)  
   *March 2026*
 
 ## Closing Matter
 
-* [**Historical Note**](historical-note.html)  
+* [**Historical Note**](https://andreas-breidenthal.github.io/the-scalpel-slipped/historical-note.html)  
   *What is documented · What is invented*
