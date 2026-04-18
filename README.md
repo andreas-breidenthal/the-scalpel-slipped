@@ -5,7 +5,7 @@ Andreas Breidenthal
 **_…and the world bled out_**
 
 > *"A higher power has restored that order which I could not maintain."*  
-> <cite>— `Emperor Franz Josef, 29th June 1914`</cite>
+> <cite>— Emperor Franz Josef, 29th June 1914</cite>
 
 *A novel in three parts*
 
