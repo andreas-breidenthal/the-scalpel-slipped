@@ -6,36 +6,57 @@
 
 /* ── TOKENS ─────────────────────────────────────────────── */
 :root {
-  --bg:          #f0f2f5;       /* cool blue-grey page */
-  --surface:     #fafbfc;       /* card / page white */
-  --ink:         #1a1d22;       /* near-black body text */
-  --steel:       #3a4455;       /* dark slate — secondary text */
-  --slate:       #5c6b82;       /* mid slate — labels, captions */
-  --mist:        #8a97a8;       /* muted — metadata, sub-text */
-  --rule:        #c8d0da;       /* cool divider lines */
-  --crimson:     #8b1a1a;       /* the tear — accent only */
-  --shadow:      rgba(26,29,34,0.10);
-  --shadow-deep: rgba(26,29,34,0.18);
+  --bg: #f0f2f5;
+  /* cool blue-grey page */
+  --surface: #fafbfc;
+  /* card / page white */
+  --ink: #1a1d22;
+  /* near-black body text */
+  --steel: #3a4455;
+  /* dark slate — secondary text */
+  --slate: #5c6b82;
+  /* mid slate — labels, captions */
+  --mist: #8a97a8;
+  /* muted — metadata, sub-text */
+  --rule: #c8d0da;
+  /* cool divider lines */
+  --crimson: #8b1a1a;
+  /* the tear — accent only */
+  --shadow: rgba(26, 29, 34, 0.10);
+  --shadow-deep: rgba(26, 29, 34, 0.18);
 
   /* ── Universal component aliases ── */
   --paper: var(--surface);
-  --aged:  var(--bg);
-  --rust:  var(--crimson);
-  --gold:  var(--slate);
+  --aged: var(--bg);
+  --rust: var(--crimson);
+  --gold: var(--slate);
   --faded: var(--mist);
-  --ink:   #1a1d22;
+  --ink: #1a1d22;
 
   /* document blocks */
-  --doc-bg:      #1e2530;       /* dark slate for report/telegram bg */
-  --doc-text:    #c8d8e8;       /* cool light text on dark */
-  --doc-dim:     #7a8fa8;       /* dimmer metadata on dark */
-  --doc-rule:    rgba(200,216,232,0.15);
-  --doc-accent:  #a8c0d8;       /* header labels on dark */
+  --doc-bg: #1e2530;
+  /* dark slate for report/telegram bg */
+  --doc-text: #c8d8e8;
+  /* cool light text on dark */
+  --doc-dim: #7a8fa8;
+  /* dimmer metadata on dark */
+  --doc-rule: rgba(200, 216, 232, 0.15);
+  --doc-accent: #a8c0d8;
+  /* header labels on dark */
 }
 
 /* ── RESET ───────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 /* ── BASE ────────────────────────────────────────────────── */
 body {
@@ -73,9 +94,19 @@ body {
   text-decoration: none;
   transition: color 0.2s;
 }
-.site-nav a:hover { color: var(--crimson); }
-.site-nav .home   { color: var(--slate); }
-.site-nav-links   { display: flex; gap: 2rem; }
+
+.site-nav a:hover {
+  color: var(--crimson);
+}
+
+.site-nav .home {
+  color: var(--slate);
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 2rem;
+}
 
 /* ── PAGE LAYOUT ─────────────────────────────────────────── */
 .page-wrap {
@@ -143,7 +174,7 @@ body {
 }
 
 /* Drop cap on first paragraph of each chapter */
-.prose > p:first-of-type::first-letter {
+.prose>p:first-of-type::first-letter {
   font-family: 'Cormorant Garamond', serif;
   font-size: 3.6em;
   font-weight: 600;
@@ -153,8 +184,14 @@ body {
   color: var(--steel);
 }
 
-.prose em  { font-style: italic; }
-.prose strong { font-weight: 600; color: var(--steel); }
+.prose em {
+  font-style: italic;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--steel);
+}
 
 /* Section break */
 .prose .section-break {
@@ -235,8 +272,14 @@ body {
   color: var(--doc-dim);
   margin-left: auto;
 }
-.ir-class.urgent { color: #e88a8a; }
-.ir-class.eyes-only { color: #e8c88a; }
+
+.ir-class.urgent {
+  color: #e88a8a;
+}
+
+.ir-class.eyes-only {
+  color: #e8c88a;
+}
 
 .ir-body {
   padding: 1rem 1.4rem 1.2rem;
@@ -278,7 +321,8 @@ body {
   border-top: 1px solid var(--doc-rule);
   border-bottom: 1px solid var(--doc-rule);
   padding: 0.8rem 1.4rem;
-  margin: 0;                    /* telegrams stack flush */
+  margin: 0;
+  /* telegrams stack flush */
   font-family: 'Inconsolata', monospace;
   font-size: 0.84rem;
   line-height: 1.65;
@@ -286,7 +330,7 @@ body {
 }
 
 /* Chain of telegrams: collapse internal borders */
-.telegram + .telegram {
+.telegram+.telegram {
   border-top: none;
   padding-top: 0.5rem;
 }
@@ -299,11 +343,13 @@ body {
   border: 1px solid var(--doc-rule);
   background: var(--doc-bg);
 }
+
 .telegram-chain .telegram {
   border: none;
   border-bottom: 1px solid var(--doc-rule);
   border-radius: 0;
 }
+
 .telegram-chain .telegram:last-child {
   border-bottom: none;
 }
@@ -329,7 +375,9 @@ body {
   font-size: 0.75rem;
 }
 
-.telegram p { margin: 0; }
+.telegram p {
+  margin: 0;
+}
 
 /* ── PRIVATE NOTE BLOCK ──────────────────────────────────── */
 /*
@@ -362,8 +410,13 @@ body {
   margin-bottom: 0.6rem;
 }
 
-.private-note p { margin-bottom: 0.7em; }
-.private-note p:last-child { margin-bottom: 0; }
+.private-note p {
+  margin-bottom: 0.7em;
+}
+
+.private-note p:last-child {
+  margin-bottom: 0;
+}
 
 /* ── CHAPTER NAV ─────────────────────────────────────────── */
 .chapter-nav {
@@ -385,8 +438,14 @@ body {
   text-decoration: none;
   transition: color 0.2s;
 }
-.chapter-nav a:hover { color: var(--crimson); }
-.chapter-nav .nav-center { color: var(--rule); }
+
+.chapter-nav a:hover {
+  color: var(--crimson);
+}
+
+.chapter-nav .nav-center {
+  color: var(--rule);
+}
 
 /* ── INDEX PAGE STYLES ───────────────────────────────────── */
 /* (used on index.html only, kept here so no separate file needed) */
@@ -412,6 +471,7 @@ body {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
+
   .cover-img {
     width: calc(100% - 2rem);
     max-width: 280px;
@@ -425,6 +485,7 @@ body {
   overflow: hidden;
   box-shadow: 0 4px 24px var(--shadow), 0 1px 4px var(--shadow);
 }
+
 .cover-img img {
   width: 100%;
   height: auto;
@@ -456,7 +517,8 @@ h1 {
   letter-spacing: -0.01em;
 }
 
-.tagline, .subtitle {
+.tagline,
+.subtitle {
   font-family: 'Cormorant Garamond', serif;
   font-size: 1.1rem;
   font-weight: 300;
@@ -473,6 +535,7 @@ h1 {
   padding-left: 1rem;
   line-height: 1.6;
 }
+
 .epigraph cite {
   display: block;
   font-style: normal;
@@ -501,7 +564,10 @@ h1 {
   line-height: 1.8;
   max-width: 520px;
 }
-.about-text p + p { margin-top: 1rem; }
+
+.about-text p+p {
+  margin-top: 1rem;
+}
 
 .fiction-note {
   font-size: 0.82rem;
@@ -522,10 +588,16 @@ h1 {
   padding: 0.5rem 1.2rem;
   transition: background 0.2s, color 0.2s;
 }
-.start-btn:hover { background: var(--crimson); color: var(--surface); }
+
+.start-btn:hover {
+  background: var(--crimson);
+  color: var(--surface);
+}
 
 /* Contents */
-.contents-section { margin-bottom: 3rem; }
+.contents-section {
+  margin-bottom: 3rem;
+}
 
 .contents-heading {
   font-family: 'Inconsolata', monospace;
@@ -538,6 +610,7 @@ h1 {
   align-items: center;
   gap: 1.2rem;
 }
+
 .contents-heading::after {
   content: '';
   flex: 1;
@@ -566,9 +639,18 @@ h1 {
   color: inherit;
   transition: background 0.15s;
 }
-.contents-item:first-of-type { border-top: 1px solid var(--rule); }
-.contents-item:hover { background: rgba(139,26,26,0.03); }
-.contents-item:hover .item-title { color: var(--crimson); }
+
+.contents-item:first-of-type {
+  border-top: 1px solid var(--rule);
+}
+
+.contents-item:hover {
+  background: rgba(139, 26, 26, 0.03);
+}
+
+.contents-item:hover .item-title {
+  color: var(--crimson);
+}
 
 .item-num {
   font-family: 'Inconsolata', monospace;
@@ -579,7 +661,11 @@ h1 {
   padding-top: 0.15rem;
 }
 
-.item-body { display: flex; flex-direction: column; gap: 0.1rem; }
+.item-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
 
 .item-title {
   font-family: 'Cormorant Garamond', serif;
@@ -611,12 +697,16 @@ h1 {
   color: var(--rule);
   letter-spacing: 0.06em;
 }
+
 .book-footer a {
   color: var(--mist);
   text-decoration: none;
   transition: color 0.2s;
 }
-.book-footer a:hover { color: var(--crimson); }
+
+.book-footer a:hover {
+  color: var(--crimson);
+}
 
 /* ── FADE ANIMATION ──────────────────────────────────────── */
 .fade-in {
@@ -624,23 +714,50 @@ h1 {
   transform: translateY(12px);
   animation: fadeUp 0.6s ease forwards;
 }
-@keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
-.fade-in:nth-child(1) { animation-delay: 0.05s; }
-.fade-in:nth-child(2) { animation-delay: 0.2s; }
-.fade-in:nth-child(3) { animation-delay: 0.35s; }
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.fade-in:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.fade-in:nth-child(3) {
+  animation-delay: 0.35s;
+}
 
 /* ── MOBILE ──────────────────────────────────────────────── */
 @media (max-width: 640px) {
-  .page-wrap { padding: 6rem 1.2rem 5rem; }
+  .page-wrap {
+    padding: 6rem 1.2rem 5rem;
+  }
 
   .intel-report,
   .telegram,
-  .telegram-chain { font-size: 0.8rem; }
+  .telegram-chain {
+    font-size: 0.8rem;
+  }
 
-  .ir-header { flex-direction: column; gap: 0.2rem; }
-  .ir-class  { margin-left: 0; }
+  .ir-header {
+    flex-direction: column;
+    gap: 0.2rem;
+  }
 
-  .chapter-nav { font-size: 0.68rem; }
+  .ir-class {
+    margin-left: 0;
+  }
+
+  .chapter-nav {
+    font-size: 0.68rem;
+  }
 }
 
 /* ── Universal component overrides ────────────────────────── */
@@ -648,11 +765,13 @@ h1 {
   background-color: var(--surface) !important;
   border-bottom: 1px solid var(--rule) !important;
 }
+
 .universal-header a,
 .universal-header-opinions {
   color: var(--slate) !important;
   opacity: 1 !important;
 }
+
 .universal-header a:hover,
 .universal-header-opinions:hover {
   color: var(--crimson) !important;
